@@ -4,7 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                withMaven(maven : 'apache-maven-3.6.1') {
+                sh'mvn clean compile'
+                }
+                echo 'Build success..'
             }
         }
         stage('Test') {
